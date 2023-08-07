@@ -2,19 +2,27 @@ steps:
   # Install dependencies
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
+
+  # Install Chromium
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install", "puppeteer"]
+
   # Set the CHROME_BIN environment variable
   - name: "gcr.io/cloud-builders/gcloud"
     entrypoint: "bash"
     args:
       - "-c"
       - |
-        echo 'export CHROME_BIN=/usr/bin/google-chrome' >> /root/.bashrc
+        echo 'export CHROME_BIN=/usr/local/bin/puppeteer' >> /root/.bashrc
+
   # Run unit tests
   - name: "gcr.io/cloud-builders/npm"
     args: ["test"]
+
   # Build the Angular app
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "build"]
+
   # Deploy the app to a web server (replace [YOUR_BUCKET_NAME] with the name of your GCS bucket)
   - name: "gcr.io/cloud-builders/gsutil"
-    args: ["-m", "cp", "-r", "dist/*", "gs://ichar-app/"]
+    args: ["-m", "cp", "-r", "dist/*", "gs://ichair-app/"]
