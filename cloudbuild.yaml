@@ -13,7 +13,7 @@ steps:
         "set",
         "image",
         "deployment/ichair-app-deployment",
-        "ichair-app-containere=gcr.io/swift-surf-395200/ichair:$SHORT_SHA",
+        "ichair-app-container=gcr.io/swift-surf-395200/ichair:$SHORT_SHA",
       ]
     env:
       - "CLOUDSDK_COMPUTE_REGION=us-central1"

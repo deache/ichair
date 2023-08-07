@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ichair-app-deployment
+spec:
+  replicas: 3 # Number of replicas (pods) to run
+  selector:
+    matchLabels:
+      app: ichair-app
+  template:
+    metadata:
+      labels:
+        app: ichair-app
+    spec:
+      containers:
+        - name: ichair-app-container
+          image: gcr.io/swift-surf-395200/ichair:latest
+          ports:
+            - containerPort: 80 # Port on which your application listens
