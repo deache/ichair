@@ -1,0 +1,15 @@
+.login {
+    width: 100%;
+    height: 100vh;
+
+    &_banner {
+        width: 100%;
+        height: 100vh;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
