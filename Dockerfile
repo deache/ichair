@@ -1,21 +1,14 @@
-# Use Node.js base image
-FROM node:14
-
-# Install necessary dependencies, including Chrome
-RUN apt-get update \
-    && apt-get install -yq libgconf-2-4 libxi6 libgconf-2-4
-
-RUN apt-get update \
-    && apt-get -q -y install google-chrome-stable
-
-# Set the Chrome binary path as an environment variable
-ENV CHROME_BIN=/usr/bin/google-chrome
+# Use the official Chrome Headless Docker image
+FROM alpine:latest
 
 # Set the working directory
 WORKDIR /app
 
 # Copy the application code into the container
 COPY . .
+
+# Install Node.js
+RUN apk add --update nodejs npm
 
 # Install Angular CLI globally
 RUN npm install -g @angular/cli

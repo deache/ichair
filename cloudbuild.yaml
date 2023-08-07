@@ -1,5 +1,5 @@
 steps:
-  # Build the custom Docker image with Chrome and Angular CLI
+  # Build the custom Docker image with Chrome Headless and Angular CLI
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/$PROJECT_ID/angular-app", "."]
 
@@ -11,6 +11,6 @@ steps:
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "build"]
 
-  # Deploy the app to a web server
+  # Deploy the app to a web server (replace [YOUR_BUCKET_NAME] with the name of your GCS bucket)
   - name: "gcr.io/cloud-builders/gsutil"
     args: ["-m", "cp", "-r", "dist/*", "gs://ichair-app/"]
