@@ -15,6 +15,6 @@ steps:
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "build"]
 
-  # Deploy the app to a web server (replace [YOUR_BUCKET_NAME] with the name of your GCS bucket)
+  # Deploy the app to a web server (replace ichair-app with the name of your GCS bucket)
   - name: "gcr.io/cloud-builders/gsutil"
-    args: ["-m", "cp", "-r", "dist/*", "gs://[YOUR_BUCKET_NAME]/"]
+    args: ["-m", "cp", "-r", "dist/*", "gs://ichair-app/"]
