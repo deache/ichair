@@ -1,5 +1,5 @@
-# Use the official Chrome Headless Docker image
-FROM alpine:latest
+# Use the official Node.js image as the base
+FROM node:14
 
 # Set the working directory
 WORKDIR /app
@@ -7,8 +7,12 @@ WORKDIR /app
 # Copy the application code into the container
 COPY . .
 
-# Install Node.js
-RUN apk add --update nodejs npm
+# Install Chromium and other necessary dependencies
+RUN apt-get update \
+    && apt-get -y install chromium
+
+# Set the Chrome binary path as an environment variable
+ENV CHROME_BIN=/usr/bin/chromium
 
 # Install Angular CLI globally
 RUN npm install -g @angular/cli
@@ -20,4 +24,4 @@ RUN npm install
 EXPOSE 9876
 
 # Run the tests using the Angular CLI command
-CMD ng test --watch=false --browsers=ChromeHeadless
+CMD ng test --watch=false --browsers=ChromeHeadlessNoSandbox
