@@ -1,16 +1,16 @@
 steps:
-  # Install dependencies
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["install"]
+  # Build the custom Docker image with Chrome and Angular CLI
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/angular-app", "."]
 
-  # Run unit tests with Karma and Chromium
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["run", "test", "--", "--browsers", "ChromeHeadless"]
+  # Run unit tests with the custom Docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["run", "gcr.io/$PROJECT_ID/angular-app"]
 
   # Build the Angular app
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "build"]
 
-  # Deploy the app to a web server (replace [YOUR_BUCKET_NAME] with the name of your GCS bucket)
+  # Deploy the app to a web server
   - name: "gcr.io/cloud-builders/gsutil"
     args: ["-m", "cp", "-r", "dist/*", "gs://ichair-app/"]
