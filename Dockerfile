@@ -14,13 +14,13 @@ RUN npm install
 COPY . .
 
 # Build the Angular app (replace 'your-build-command' with the actual build command for your Angular app)
-RUN npm run build --prod
+RUN npm run build --configuration=production
 
 # Use a smaller and more efficient base image for serving the Angular app
 FROM nginx:latest
 
 # Copy the built Angular app files from the previous stage to the nginx container
-COPY --from=build-stage /app/dist/your-app-name /usr/share/nginx/html
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # Expose the port on which the Angular app will run (default is 80 for Nginx)
 EXPOSE 80
