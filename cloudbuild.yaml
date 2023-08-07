@@ -2,28 +2,16 @@ steps:
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
   - name: "gcr.io/cloud-builders/npm"
-    args: ["run", "build", "--prod"]
-
-images:
-  - "gcr.io/$PROJECT_ID/ichair-app"
-
-artifacts:
-  objects:
-    location: "gs://ichair-app"
-    paths: ["dist"]
-
-deployments:
-  - name: "ichair-app-deployment"
-    target: "gke"
-    spec:
-      template:
-        spec:
-          containers:
-            - name: "ichair-container"
-              image: "gcr.io/$PROJECT_ID/ichair-app"
-              ports:
-                - containerPort: 80
-              env:
-                - name: "ENV_VARIABLE1"
-                  value: "VALUE1"
-                # Add other environment variables if needed
+    args: ["run", "build"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/swift-surf-395200/ichair:$SHORT_SHA", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/swift-surf-395200/ichair:$SHORT_SHA"]
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      [
+        "set",
+        "image",
+        "deployment/ichair-app-deployment",
+        "ichair-app-containere=gcr.io/swift-surf-395200/ichair:$SHORT_SHA",
+      ]
