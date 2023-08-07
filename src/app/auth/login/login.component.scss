@@ -2,6 +2,47 @@
     width: 100%;
     height: 100vh;
 
+    &_form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &-logo {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            min-height: 150px;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: 500;
+            img {
+                width: 50px;
+                width: 40px;
+                margin-right: 20px;
+            }
+        }
+
+        &-form {
+            min-height: 200px;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 50px;
+
+            h1 {
+                text-align: left;
+            }
+
+            form {
+                width: 100%;
+                margin-top: 30px;
+            }
+        }
+    }
+
     &_banner {
         width: 100%;
         height: 100vh;
@@ -10,6 +51,18 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+
+    .login {
+        &_form {
+            &-form {
+                padding: 0 20px;
+                width: 100%;
+            }
         }
     }
 }
