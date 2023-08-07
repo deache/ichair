@@ -8,7 +8,7 @@ steps:
     args:
       - "-c"
       - |
-        echo 'export CHROME_BIN=/usr/bin/google-chrome' >> $HOME/.bashrc
+        echo 'export CHROME_BIN=/usr/bin/google-chrome' >> /root/.bashrc
   # Run unit tests
   - name: "gcr.io/cloud-builders/npm"
     args: ["test"]
