@@ -7,6 +7,10 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["run", "gcr.io/$PROJECT_ID/angular-app"]
 
+  # Install dependencies
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install"]
+
   # Build the Angular app
   - name: "gcr.io/cloud-builders/npm"
     args: ["run", "build"]
