@@ -5,7 +5,7 @@ steps:
 
   # Run unit tests with Karma and Chromium
   - name: "gcr.io/cloud-builders/npm"
-    args: ["run", "test", "--", "--browsers", "ChromiumHeadlessNoSandbox"]
+    args: ["run", "test", "--", "--browsers", "ChromeHeadless"]
 
   # Build the Angular app
   - name: "gcr.io/cloud-builders/npm"
