@@ -1,20 +1,29 @@
 steps:
-  # Build the custom Docker image with Chromium and Angular CLI
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/angular-app", "."]
-
-  # Run unit tests with the custom Docker image
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["run", "gcr.io/$PROJECT_ID/angular-app"]
-
-  # Install dependencies
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
-
-  # Build the Angular app
   - name: "gcr.io/cloud-builders/npm"
-    args: ["run", "build"]
+    args: ["run", "build", "--prod"]
 
-  # Deploy the app to a web server (replace ichair-app with the name of your GCS bucket)
-  - name: "gcr.io/cloud-builders/gsutil"
-    args: ["-m", "cp", "-r", "dist/*", "gs://ichair-app/"]
+images:
+  - "gcr.io/$PROJECT_ID/ichair-app"
+
+artifacts:
+  objects:
+    location: "gs://ichair-app"
+    paths: ["dist"]
+
+deployments:
+  - name: "ichair-app-deployment"
+    target: "gke"
+    spec:
+      template:
+        spec:
+          containers:
+            - name: "ichair-container"
+              image: "gcr.io/$PROJECT_ID/ichair-app"
+              ports:
+                - containerPort: 80
+              env:
+                - name: "ENV_VARIABLE1"
+                  value: "VALUE1"
+                # Add other environment variables if needed
