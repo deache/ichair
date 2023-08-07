@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the Angular app (replace 'your-build-command' with the actual build command for your Angular app)
-RUN npm run your-build-command
+RUN npm run build --prod
 
 # Use a smaller and more efficient base image for serving the Angular app
 FROM nginx:latest
