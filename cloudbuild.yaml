@@ -3,21 +3,9 @@ steps:
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
 
-  # Install Chromium
+  # Run unit tests with Karma and Chromium
   - name: "gcr.io/cloud-builders/npm"
-    args: ["install", "puppeteer"]
-
-  # Set the CHROME_BIN environment variable
-  - name: "gcr.io/cloud-builders/gcloud"
-    entrypoint: "bash"
-    args:
-      - "-c"
-      - |
-        echo 'export CHROME_BIN=/usr/local/bin/puppeteer' >> /root/.bashrc
-
-  # Run unit tests
-  - name: "gcr.io/cloud-builders/npm"
-    args: ["test"]
+    args: ["run", "test", "--", "--browsers", "ChromiumHeadlessNoSandbox"]
 
   # Build the Angular app
   - name: "gcr.io/cloud-builders/npm"
