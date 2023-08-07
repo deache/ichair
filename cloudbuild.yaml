@@ -2,6 +2,13 @@ steps:
   # Install dependencies
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
+  # Set the CHROME_BIN environment variable
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        echo 'export CHROME_BIN=/usr/bin/google-chrome' >> $HOME/.bashrc
   # Run unit tests
   - name: "gcr.io/cloud-builders/npm"
     args: ["test"]
