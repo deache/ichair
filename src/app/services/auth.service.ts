@@ -18,7 +18,8 @@ export class AuthService {
       this.auth.createUserWithEmailAndPassword(email, password).then((userCredential: any) => {
         const uid = userCredential.user?.uid;
         this.afDatabase.object(`/users/${uid}`).set(user).then((response) => {
-          observer.next(response);
+          console.log('response after create a user', response);
+          observer.next(userCredential.user);
         });
       })
     });

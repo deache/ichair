@@ -1,0 +1,62 @@
+<div class="login">
+    <div class="row">
+        <div class="col-md-8 col-lg-6 col-12">
+            <div class="login_form">
+                <div class="login_form-logo">
+                    <img src="/assets/images/lounge.png" alt="logo">
+                    iChair Web Store
+                </div>
+
+                <div class="login_form-form">
+                    <h1 class="login_form-title">Let's create your account!</h1>
+                    <h6 class="login_form-subtitle">Signing up for iChair is fast and 100% free.</h6>
+
+                    <form [formGroup]="registerForm" (ngSubmit)="createUser()">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" formControlName="name" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lastname" class="form-label">Lastname</label>
+                                    <input type="text" class="form-control" id="lastname" formControlName="lastname" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="email" class="form-control" id="phone" formControlName="phone" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" formControlName="password">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Continue</button>
+                                </div>
+
+                                <a routerLink="login" class="btn btn-link">Already have an account? Login</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-6 d-none d-lg-flex">
+            <div class="login_banner">
+                <img src="/assets/images/banners/banner-1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
