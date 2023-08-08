@@ -64,5 +64,30 @@
                 height: 100%;
             }
         }
+
+        &-right {
+            display: flex;
+            width: 33%;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 20px;
+
+
+        }
+
+        &-icon {
+            background: #ccc;
+            padding: 10px 10px;
+            display: flex;
+            justify-content: center;
+            border-radius: 15px;
+
+            .icon-link {
+                margin: 0px 10px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+        }
     }
 }
