@@ -1,0 +1,36 @@
+
+<div class="catalog">
+    <div class="catalog_banner">
+        <app-banner title="Decorative highend Chairs for office and home"
+            subtitle="Solid corduroy chusion covers that bring charm and modernity to your space."
+            imagePath="/assets/images/banners/banner-3.png">
+        </app-banner>
+    </div>
+    
+    <div class="catalog_filters">
+        <input class="form-control" type="text" placeholder="search..">
+    </div>
+    
+    <div class="catalog_list">
+        <ng-container *ngFor="let product of products">
+            <div class="product-card">
+                <div class="wrapper">
+                    <div class="card-image">
+                        <img [src]="product.imageUrl" alt="">
+                    </div>
+                    <div class="title">
+                        {{ product.name }} - <small>{{ product.sku }}</small>
+                    </div>
+                    <div class="price">
+                        {{ product.price | currency }}
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary">+ Add to Cart</button>
+                        <button class="btn btn-secondary">View Detail</button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+</div>
