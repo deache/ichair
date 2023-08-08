@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private auth: AngularFireAuth, private afDatabase: AngularFireDatabase) {
     this.auth.authState.subscribe({
       next: (result: any) => {
-        const user = this.afDatabase.object(`/users/${result.uid}`).valueChanges().subscribe({
+        this.afDatabase.object(`/users/${result.uid}`).valueChanges().subscribe({
           next: (data) => console.log(data)
         });
       }
