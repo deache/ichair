@@ -1,0 +1,16 @@
+<div class="cart">
+    <div class="cart_close" (click)="closeCart()"><img src="assets/images/icons/close.svg"></div>
+    <div class="cart_title"><h1>Your selection.</h1></div>
+    
+    <div class="cart_items">
+        <ng-container *ngFor="let item of cart$ | async">
+            <app-cart-item [cartItem]="item" (onRemoveClicked)="removeItem($event)"></app-cart-item>
+        </ng-container>
+    </div>
+
+    <div class="cart_resume">
+        <div class="d-grid">
+            <button class="btn btn-primary">Continue - {{ total | currency }}</button>
+        </div>
+    </div>
+</div>

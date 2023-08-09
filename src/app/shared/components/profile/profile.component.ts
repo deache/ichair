@@ -26,7 +26,7 @@ export class ProfileComponent {
 
   constructor(private store: Store, private auth: AuthService, private router: Router, private toastr: ToastrService) {
     this.currentUser$.subscribe({
-      next: (user: User) => {
+      next: (user: User | null) => {
         if (user) {
           this.user = user;
           this.profileForm.patchValue(this.user);

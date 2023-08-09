@@ -41,7 +41,7 @@ export class AuthService {
           this.afDatabase.object(`/users/${uid}`).valueChanges().subscribe({
             next: (user) => {
               observer.next(user);
-              this.store.dispatch(loginSuccess({ user }));
+              //this.store.dispatch(loginSuccess({ user }));
             }
           });
         }).catch(() => {

@@ -1,0 +1,49 @@
+.cart-item {
+    display: flex;
+    width: 100%;
+    height: 190px;
+    margin-bottom: 15px;
+    align-items: center;
+    border-bottom: 1px solid #e3e3e3;
+    position: relative;
+
+    &_delete {
+        width: 20px;
+        height: 21px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    &_image {
+        width: 40%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &_info {
+        width: 60%;
+        height: 100%;
+        padding: 20px 15px;
+
+        &-name {
+            font-size: 18px;
+            margin-bottom: 20px;
+
+            small {
+                font-size: 14px;
+                font-weight: 100;
+            }
+        }
+
+        &-price {
+            margin-bottom: 20px;
+        }
+    }
+}
