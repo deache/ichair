@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h5>{{ product?.name }}</h5>
+    <button type="button" (click)="closeModal()" class="btn btn-close" aria-label="Close">
+        <i class="mdi mdi-close"></i>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="product-detail">
+        <div class="product-detail_image">
+            <img [src]="product?.imageUrl" alt="">
+        </div>
+        <div class="product-detail_info">
+            <div class="product-detail_info-item"><span>Name:</span> {{ product?.name }}</div>
+            <div class="product-detail_info-item"><span>SKU:</span> {{ product?.sku }}</div>
+            <div class="product-detail_info-item"><span>Price:</span> {{ product?.price | currency }}</div>
+            <div class="product-detail_info-item"><span>Description:</span> {{ product?.description }}</div>
+            <div class="product-detail_info-item"><span>Color:</span> <div class="color-item" [style.backgroundColor]="product?.color"></div></div>
+            <div class="product-detail_info-item"><span>Environment:</span> {{ product?.type }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button (click)="closeModal()" class="btn btn-sm btn-light">Close</button>
+    <button (click)="addItem(product)" class="btn btn-primary">+ Add to Cart</button>
+</div>

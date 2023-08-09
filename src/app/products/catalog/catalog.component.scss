@@ -25,3 +25,13 @@
         align-items: center;
     }
 }
+
+@media (max-width: 576px) {
+    .catalog {
+        &_filters {
+            &-search {
+                width: 100%;
+            }
+        }
+    }
+}
