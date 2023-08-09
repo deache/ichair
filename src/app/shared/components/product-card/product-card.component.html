@@ -1,0 +1,17 @@
+<div class="product-card" *ngIf="product">
+    <div class="product-card_wrapper">
+        <div class="product-card_card-image">
+            <img [src]="product.imageUrl" alt="">
+        </div>
+        <div class="product-card_title">
+            {{ product.name }} - <small>{{ product.sku }}</small>
+        </div>
+        <div class="product-card_price">
+            {{ product.price | currency }}
+        </div>
+        <div class="product-card_actions">
+            <button class="btn btn-primary">+ Add to Cart</button>
+            <button class="btn btn-secondary">View Detail</button>
+        </div>
+    </div>
+</div>

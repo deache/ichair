@@ -40,7 +40,11 @@
                     }
 
                     &:hover {
-                        border-bottom: 2px solid blue;
+                        border-bottom: 2px solid #00b0ff;
+                    }
+
+                    &.selected {
+                        border-bottom: 2px solid #00b0ff;
                     }
                 }
             }

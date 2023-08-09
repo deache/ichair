@@ -9,9 +9,8 @@
         margin-top: 30px;
         padding: 0 20px;
 
-        input {
+        &-search {
             width: 300px;
-            padding-left: 30px;
             height: 45px;
         }
     }
@@ -24,63 +23,5 @@
         flex-wrap: wrap;
         justify-content: flex-start;
         align-items: center;
-
-        .product-card {
-            padding: 0 10px;
-            margin-bottom: 15px;
-            cursor: pointer;
-
-            .wrapper {
-                width: 320px;
-                height: 400px;
-                padding: 20px;
-                box-shadow: 0px 0px 7px 3px #ebebeb;
-                border-radius: 30px;
-            }
-
-            .card-image {
-                width: 100%;
-                height: 200px;
-                padding: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                img {
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-
-            .title {
-                font-size: 18px;
-                font-weight: 600;
-                margin: 10px 0;
-
-                small {
-                    font-size: 14px;
-                    font-weight: 300;
-                }
-            }
-
-            .price {
-                margin: 10px 0;
-            }
-
-            .actions {
-                display: flex;
-                padding: 10px 0;
-                align-items: center;
-                justify-content: center;
-                height: 90px;
-                width: 100%;
-
-                button {
-                    margin: 0 5px;
-                    padding: 6px 12px;
-                    width: 100%;
-                }
-            }
-        }
     }
 }

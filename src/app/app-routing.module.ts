@@ -6,8 +6,8 @@ import { ProductsModule } from './products/products.module';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'products' },
-  { path: 'products', pathMatch: 'full', component: LayoutComponent, loadChildren: () => ProductsModule },
-  { path: 'auth', pathMatch: 'full', loadChildren: () => AuthModule },
+  { path: 'products', component: LayoutComponent, loadChildren: () => ProductsModule },
+  { path: 'auth', loadChildren: () => AuthModule },
 ];
 
 @NgModule({
