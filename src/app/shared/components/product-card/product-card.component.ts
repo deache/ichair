@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Cart } from 'src/app/interfaces/cart.interface';
 import { Product } from 'src/app/interfaces/product.interface';
 
 @Component({
@@ -8,4 +9,15 @@ import { Product } from 'src/app/interfaces/product.interface';
 })
 export class ProductCardComponent {
   @Input() product: Product | undefined = undefined;
+  @Output() onProductClick: EventEmitter<Product> = new EventEmitter();
+  @Output() onAddToCart: EventEmitter<Cart> = new EventEmitter();
+
+  public productClicked(product: Product) {
+    this.onProductClick.emit(product);
+  }
+
+  public addToCartClicked(product: Product, quantity: number) {
+    this.onAddToCart.emit({ product, quantity })
+  }
 }
+
