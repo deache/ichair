@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { loginSuccess } from '../actions/user.actions';
-import { User } from '../interfaces/user.interface';
+import { User } from '../../../interfaces/user.interface';
 
 @Injectable()
 export class UserEffects {
