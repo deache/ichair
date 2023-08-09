@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install Node.js dependencies
 RUN npm install
 
+# Copy the rest of the application files to the container
+COPY . .
+
 # Build the Angular app
 RUN npm run build --configuration=production
 
@@ -23,7 +26,7 @@ RUN rm /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the built Angular app to the NGINX html directory
-COPY dist/ /usr/share/nginx/html/
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # Expose port 80 for NGINX
 EXPOSE 80
