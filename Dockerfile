@@ -20,8 +20,23 @@ RUN npm install -g @angular/cli
 # Install application dependencies
 RUN npm install
 
-# Expose port 9876 for Karma tests
-EXPOSE 9876
+# Build the Angular app
+RUN ng build
 
-# Run the tests using the Angular CLI command
-CMD ng test --watch=false --browsers=ChromeHeadlessNoSandbox
+# Install NGINX
+RUN apt-get install -y nginx
+
+# Remove the default NGINX configuration
+RUN rm /etc/nginx/nginx.conf
+
+# Copy your custom NGINX configuration to the container
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy the built Angular app to the NGINX html directory
+COPY dist/ /usr/share/nginx/html/
+
+# Expose port 80 for NGINX
+EXPOSE 80
+
+# Start NGINX when the container starts
+CMD ["nginx", "-g", "daemon off;"]
