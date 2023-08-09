@@ -10,20 +10,23 @@ COPY package*.json ./
 # Install Node.js dependencies
 RUN npm install
 
-# Copy the rest of the application files to the container
-COPY . .
+# Build the Angular app
+RUN ng build
 
-# Build the Angular app (replace 'your-build-command' with the actual build command for your Angular app)
-RUN npm run build --configuration=production
+# Install NGINX
+RUN apt-get install -y nginx
 
-# Use a smaller and more efficient base image for serving the Angular app
-FROM nginx:latest
+# Remove the default NGINX configuration
+RUN rm /etc/nginx/nginx.conf
 
-# Copy the built Angular app files from the previous stage to the nginx container
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+# Copy your custom NGINX configuration to the container
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose the port on which the Angular app will run (default is 80 for Nginx)
+# Copy the built Angular app to the NGINX html directory
+COPY dist/ /usr/share/nginx/html/
+
+# Expose port 80 for NGINX
 EXPOSE 80
 
-# Start Nginx to serve the Angular app
+# Start NGINX when the container starts
 CMD ["nginx", "-g", "daemon off;"]
