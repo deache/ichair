@@ -55,3 +55,11 @@
         }
     }
 }
+
+@media (max-width: 576px) {
+    .product-card {
+        &_wrapper {
+            width: calc(100vw - 50px);
+        }
+    }
+}

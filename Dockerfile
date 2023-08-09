@@ -1,23 +1,13 @@
-# Use the official Node.js image as the base
-FROM node:14
+# Use the official Node.js image as the base image
+FROM node:14 as build-stage
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the application code into the container
-COPY . .
+# Copy the package.json and package-lock.json files to the container
+COPY package*.json ./
 
-# Install Chromium and other necessary dependencies
-RUN apt-get update \
-    && apt-get -y install chromium
-
-# Set the Chrome binary path as an environment variable
-ENV CHROME_BIN=/usr/bin/chromium
-
-# Install Angular CLI globally
-RUN npm install -g @angular/cli
-
-# Install application dependencies
+# Install Node.js dependencies
 RUN npm install
 
 # Build the Angular app
