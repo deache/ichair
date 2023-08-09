@@ -15,13 +15,17 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { AuthService } from './services/auth.service';
+import { authReducer } from './shared/state/reducers/user.reducer';
+import { ProfileComponent } from './shared/components/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,8 +34,9 @@ import { AuthService } from './services/auth.service';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ auth: authReducer }),
     ToastrModule.forRoot(),
+    ReactiveFormsModule,
 
   ],
   providers: [AuthService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectCurrentUser } from 'src/app/shared/state/selector/user.selector';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  currentUser$ = this.store.select(selectCurrentUser);
 
+  constructor(private store: Store) {
+  }
+
+  public openProfile() {
+    document.querySelector(".profile")?.classList.add("opened")
+  }
 }

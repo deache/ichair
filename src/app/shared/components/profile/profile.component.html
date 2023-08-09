@@ -1,0 +1,37 @@
+<div class="profile">
+    <div class="profile_close" (click)="closeProfile()"><img src="assets/images/icons/close-white.svg"></div>
+    <div class="profile_banner">
+        <img src="/assets/images/banners/banner-4.jpg">
+    </div>
+    <div class="profile_name">{{ user?.name }} {{ user?.lastname }}</div>
+    <div class="profile_picture">
+        <img src="/assets/images/profile.jpg">
+    </div>
+    <div class="profile_info">
+        <h6>Profile details <img (click)="editMode = !editMode" src="/assets/images/icons/pencil.svg"></h6>
+        <form [formGroup]="profileForm" (submit)="updateUser()">
+            <div class="profile_info-item" *ngIf="editMode">
+                <div class="left">Name</div>
+                <div class="right"><input formControlName="name" class="form-control" [readOnly]="!editMode"></div>
+            </div>
+            <div class="profile_info-item" *ngIf="editMode">
+                <div class="left">Lastname</div>
+                <div class="right"><input formControlName="lastname" class="form-control" [readOnly]="!editMode"></div>
+            </div>
+            <div class="profile_info-item">
+                <div class="left">Email</div>
+                <div class="right"><input formControlName="email" class="form-control" [readOnly]="!editMode"></div>
+            </div>
+            <div class="profile_info-item">
+                <div class="left">Phone</div>
+                <div class="right"><input formControlName="phone" class="form-control" [readOnly]="!editMode"></div>
+            </div>
+            <div class="d-grid" *ngIf="editMode">
+                <button [disabled]="profileForm.invalid" type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+    <div class="profile_logout">
+        <a class="btn btn-link" (click)="logout()">Logout</a>
+    </div>
+</div>

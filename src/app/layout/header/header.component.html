@@ -3,7 +3,7 @@
         <div class="navbar_menu-left">
             <div class="navbar_menu-links">
                 <ul>
-                    <li>Store</li>
+                    <li class="selected">Store</li>
                     <li>Contact</li>
                 </ul>
             </div>
@@ -15,7 +15,10 @@
         </div>
         <div class="navbar_menu-right">
             <div class="navbar_menu-icon">
-                <div class="icon-link"><img src="/assets/images/icons/account-black.svg"></div>
+                <div class="icon-link" (click)="openProfile()">
+                    <img src="/assets/images/icons/account-black.svg">
+                    <div *ngIf="(currentUser$ | async) as currentUser">{{ currentUser.name }} {{ currentUser.lastname[0]}}.</div>
+                </div>
                 <div class="icon-link"><img src="/assets/images/icons/cart-black.svg"></div>
             </div>
         </div>
