@@ -16,8 +16,8 @@ COPY . .
 # Build the Angular app
 RUN npm run build --configuration=production
 
-# Install NGINX
-RUN apt-get install -y nginx
+# Use a smaller and more efficient base image for serving the Angular app
+FROM nginx:latest
 
 # Remove the default NGINX configuration
 RUN rm /etc/nginx/nginx.conf
