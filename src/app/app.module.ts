@@ -16,8 +16,9 @@ import { HeaderComponent } from './layout/header/header.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { AuthService } from './services/auth.service';
 import { authReducer } from './shared/state/reducers/user.reducer';
-import { ProfileComponent } from './shared/components/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { cartReducer } from './shared/state/reducers/cart.reducer';
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    ProfileComponent,
   ],
+  providers: [AuthService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -34,12 +36,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
-    StoreModule.forRoot({ auth: authReducer }),
+    StoreModule.forRoot({ auth: authReducer, cart: cartReducer }),
     ToastrModule.forRoot(),
     ReactiveFormsModule,
-
-  ],
-  providers: [AuthService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
-  bootstrap: [AppComponent]
+    SharedModule
+  ]
 })
 export class AppModule { }

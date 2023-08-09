@@ -1,12 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
 import { loginSuccess, logout } from '../actions/user.actions';
+import { User } from 'src/app/interfaces/user.interface';
+import { Cart } from 'src/app/interfaces/cart.interface';
 
-export interface AuthState {
-    user: any; // User object or null
+export interface AppState {
+    user: User | null;
+    cartItems: Cart[]
 }
 
-const initialState: AuthState = {
+export const initialState: AppState = {
     user: null,
+    cartItems: [],
 };
 
 export const authReducer = createReducer(

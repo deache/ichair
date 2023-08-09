@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Cart } from 'src/app/interfaces/cart.interface';
 import { Product } from 'src/app/interfaces/product.interface';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-catalog',
@@ -10,7 +12,7 @@ import { Product } from 'src/app/interfaces/product.interface';
 export class CatalogComponent {
   public products: Array<Product> = [];
   public filteredProducts: Array<Product> = [];
-  constructor(private afDatabase: AngularFireDatabase) {
+  constructor(private afDatabase: AngularFireDatabase, private _cart: CartService) {
     this.getProducts();
   }
 
@@ -32,5 +34,9 @@ export class CatalogComponent {
         return productName.match(searchTerm);
       });
     }
+  }
+
+  public addToCart(cartItem: Cart) {
+    this._cart.addToCart(cartItem);
   }
 }

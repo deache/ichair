@@ -19,7 +19,10 @@
                     <img src="/assets/images/icons/account-black.svg">
                     <div *ngIf="(currentUser$ | async) as currentUser">{{ currentUser.name }} {{ currentUser.lastname[0]}}.</div>
                 </div>
-                <div class="icon-link"><img src="/assets/images/icons/cart-black.svg"></div>
+                <div class="icon-link" (click)="openCart()">
+                    <img src="/assets/images/icons/cart-black.svg">
+                    <span class="cart-counter" *ngIf="cart.length">{{ cart.length }}</span>
+                </div>
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@
     
     <div class="catalog_list">
         <ng-container *ngFor="let product of filteredProducts">
-            <app-product-card [product]="product"></app-product-card>
+            <app-product-card [product]="product" (onAddToCart)="addToCart($event)"></app-product-card>
         </ng-container>
     </div>
 </div>

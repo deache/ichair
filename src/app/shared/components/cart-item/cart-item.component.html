@@ -1,0 +1,11 @@
+<div class="cart-item" *ngIf="cartItem">
+    <div class="cart-item_delete" (click)="onRemoveClick(cartItem)"><img src="/assets/images/icons/trash.svg"></div>
+    <div class="cart-item_image">
+        <img [src]="cartItem.product.imageUrl" alt="">
+    </div>
+    <div class="cart-item_info">
+        <div class="cart-item_info-name">{{ cartItem.product.name }} <small>{{ cartItem.product.sku }}</small></div>
+        <div class="cart-item_info-price">Price: {{ cartItem.product.price | currency }}</div>
+        <div class="cart-item_info-quantity">Quantity: {{ cartItem.quantity }}</div>
+    </div>
+</div>

@@ -10,8 +10,8 @@
             {{ product.price | currency }}
         </div>
         <div class="product-card_actions">
-            <button class="btn btn-primary">+ Add to Cart</button>
-            <button class="btn btn-secondary">View Detail</button>
+            <button class="btn btn-primary" (click)="addToCartClicked(product, 1)">+ Add to Cart</button>
+            <button class="btn btn-secondary" (click)="productClicked(product)">View Detail</button>
         </div>
     </div>
 </div>
