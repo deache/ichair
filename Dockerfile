@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Build the Angular app
-RUN ng build
+RUN npm run build --configuration=production
 
 # Install NGINX
 RUN apt-get install -y nginx
